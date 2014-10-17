@@ -1,0 +1,60 @@
+@mixin prefixr($property, $value...) {
+    -webkit-#{$property}: $value;
+       -moz-#{$property}: $value;
+        -ms-#{$property}: $value;
+            #{$property}: $value;
+}
+
+@mixin keyframes($animation-name){
+    @-webkit-keyframes $animation-name{
+        @content;
+    }
+    @-moz-keyframes $animation-name{
+        @content;
+    }
+    @-ms-keyframes $animation-name{
+        @content;
+    }
+    @keyframes $animation-name{
+        @content;
+    }
+}
+
+// Mixin to show a baseline grid
+// only visible when body has 'debug' class
+@mixin baseline-grid($line-height) {
+    position: relative;
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        z-index: 9;
+
+        display: none;
+        background-image: -moz-linear-gradient(top, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(95%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.15)));
+        background-image: -webkit-linear-gradient(top, rgba(0,0,0,0) 95%,rgba(0,0,0,0.15) 100%);
+        background-image: -o-linear-gradient(top, rgba(0,0,0,0) 95%, rgba(0,0,0,0.15) 100%);
+        background-image: -ms-linear-gradient(top, rgba(0,0,0,0) 95%,rgba(0,0,0,0.15) 100%);
+        background-image: linear-gradient(top, rgba(0,0,0,0.15) 95%,rgba(0,0,0,0.15) 100%);
+
+        @include prefixr(background-size, 100% $line-height);
+    }
+
+    &.debug:after {
+        display: block;
+        pointer-events: none;
+    }
+}
+
+// Mixin for flexbox
+@mixin flexbox {
+    display: -moz-box;
+    display: -webkit-flex;
+    display: flex;
+}

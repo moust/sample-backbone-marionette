@@ -1,0 +1,52 @@
+@import "compass";
+
+// customize bootstrap variables here:
+@import "variables";
+
+@import "bootstrap-custom";
+
+// optional bootstrap theme
+// @import "bootstrap/theme";
+
+@import "utils";
+
+// Settings --------------------------------------------------------------
+
+$legacy-support-for-ie: true;
+$experimental-support-for-opera: true;
+$legacy-support-for-mozilla: true;
+
+// Global variables --------------------------------------------------------------
+
+
+// Vertical rhythm --------------------------------------------------------------
+
+@include establish-baseline;
+
+// Font-Faces --------------------------------------------------------------
+
+// @include font-face(
+//     "DIN",
+//     font-files("din_regular-webfont.woff", woff,
+//                "din_regular-webfont.ttf", truetype,
+//                "din_regular-webfont.svg", svg),
+//     "din_regular-webfont.eot",
+//     "normal",
+//     "normal"
+// );
+
+// Base Styles --------------------------------------------------------------
+
+html, body, button {
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@import "layout";
+@import "pages/default";
